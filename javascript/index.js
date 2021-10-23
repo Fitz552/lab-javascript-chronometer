@@ -38,7 +38,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  let newSplit = document.createElement("li");
+  newSplit.innerHTML = chronometer.split()
+  splitsElement.appendChild(newSplit)
 }
 
 function clearSplits() {
@@ -82,7 +84,9 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRightElement.className.includes("split")){
+    printSplit()
+  }
 });
 
 let Id = setInterval(()=> {printTime()},1)

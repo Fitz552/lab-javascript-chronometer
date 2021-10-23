@@ -16,7 +16,6 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
-  console.log(chronometer.currentTime)
 }
 
 function printMinutes() {
@@ -44,7 +43,10 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  let liElements = splitsElement.querySelectorAll("li");
+  for (i=0; i<liElements.length; i++) {
+    splitsElement.removeChild(liElements[i])
+  }
 }
 
 function setStopBtn() {
@@ -77,7 +79,6 @@ btnLeftElement.addEventListener('click', () => {
   else {
     setResetBtn();
     setStartBtn();
-    console.log(chronometer.currentTime)
     chronometer.stop();
   }
 });
@@ -86,6 +87,10 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   if(btnRightElement.className.includes("split")){
     printSplit()
+  }
+  else {
+    chronometer.currentTime = 0;
+    clearSplits()
   }
 });
 
